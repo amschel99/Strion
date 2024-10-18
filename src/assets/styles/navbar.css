@@ -1,0 +1,98 @@
+/* General styling */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    width: 100vw;  /* Full viewport width */
+    position: fixed; /* Keep it at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  
+  .navbar-logo h1 {
+    color: #ffffff;
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+  
+  .navbar-links li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+  }
+  
+  .navbar-links li a:hover {
+    color: #00ff99; /* Change color on hover */
+  }
+  
+  /* Mobile Menu Icon */
+  .menu-icon {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  
+  .menu-icon span {
+    height: 3px;
+    width: 25px;
+    background-color: #ffffff;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .navbar-links {
+      display: none; /* Hide the links on small screens */
+      position: absolute;
+      top: 60px; /* Position links below the navbar */
+      left: 0;
+      right: 0;
+      background-color: #222222;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      z-index: 999;
+    }
+  
+    .navbar-links.open {
+      display: flex; /* Show links when the menu is open */
+    }
+  
+    .navbar-links li a {
+      font-size: 20px;
+      width: 100%; /* Make the links take full width on mobile */
+      text-align: center;
+    }
+  
+    .menu-icon {
+      display: flex; /* Show the menu icon on small screens */
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .navbar-links {
+      display: flex; /* Show the links on larger screens */
+      position: static; /* Position normally */
+    }
+  
+    .menu-icon {
+      display: none; /* Hide the menu icon on larger screens */
+    }
+  }
+  
