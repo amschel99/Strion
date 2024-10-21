@@ -1,7 +1,7 @@
 # 🪙 Cross-Chain Staking & Lending Platform
 
 ## Overview
-g a **cross-chain decentralized finance (DeFi)** platform that enables users to stake USDT on Ethereum  or any other chain and receive wrapped tokens (**Token C**) on  Union . Users can use **Token C** as collateral to borrow assets provided by **Automated Market Makers (AMMs)** from multiple chains. AMMs are incentivized to lend assets by setting their interest rates, while collateral liquidation ensures both platform revenue and lender security.
+ a **cross-chain decentralized finance (DeFi)** platform that enables users to stake USDT on Ethereum  or any other chain and receive wrapped tokens (**Token C**) on  Union . Users can use **Token C** as collateral to borrow assets provided by **Automated Market Makers (AMMs)** from multiple chains. AMMs are incentivized to lend assets by setting their interest rates, while collateral liquidation ensures both platform revenue and lender security.
 
 ---
 
