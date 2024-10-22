@@ -65,7 +65,7 @@ Cross-chain liquidity and collateral efficiency in decentralized finance are sti
 
 ---
 ```mermaid
-graph TD;
+graph TD
     A[User] -->|Stake USDT| B[Wrapper Token C]
     B -->|Use as Collateral| C[AMMs (Lenders)]
     C -->|Provide Liquidity| D[Multi-Chain Liquidity Pools]
@@ -77,20 +77,19 @@ graph TD;
     H -->|Distribute| I[Platform Revenue]
     I -->|Part of Interest| C
     I -->|Liquidation Fees| J[Platform Earnings]
-    
     B -->|Repay| C
     C -->|Earnings| K[Incentive Rewards]
-    
+
     %% Subgraphs for better organization
     subgraph Users
         A
         E
     end
-    
+
     subgraph Lenders
         C
     end
-    
+
     subgraph Platform
         B
         D
@@ -99,6 +98,7 @@ graph TD;
         K
         J
     end
+
 
 
 ```
