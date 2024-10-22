@@ -64,8 +64,44 @@ Cross-chain liquidity and collateral efficiency in decentralized finance are sti
 
 
 ---
-
-## Contact Us
-- **Website**: [platformwebsite.com]
-- **Email**: [contact@platform.com]
-- **Twitter**: [@platformhandle]
+```mermaid
+graph TD;
+    A[User] -->|Stake USDT| B[Wrapper Token C]
+    B -->|Use as Collateral| C[AMMs (Lenders)]
+    C -->|Provide Liquidity| D[Multi-Chain Liquidity Pools]
+    D -->|Offer Assets| E[Borrowers]
+    E -->|Request to Borrow| F[Different Assets]
+    F -->|Borrow| G[Receive Assets]
+    E -->|Pay Interest| C
+    E -->|Liquidation Penalties| H[Penalty System]
+    H -->|Distribute| I[Platform Revenue]
+    I -->|Part of Interest| C
+    I -->|Liquidation Fees| J[Platform Earnings]
+    
+    %% Adding additional flow arrows to show relationships
+    B -->|Repay| C
+    C -->|Earnings| K[Incentive Rewards]
+    
+    %% Subgraphs for better organization
+    subgraph Users
+        A
+        E
+    end
+    
+    subgraph Lenders
+        C
+    end
+    
+    subgraph Platform
+        B
+        D
+        H
+        I
+        K
+        J
+    end
+    
+    %% Flow labels for clarity
+    classDef flow fill:#f9f,stroke:#333,stroke-width:2px;
+    class A,B,C,D,E,F,G,H,I,K flow;
+```
