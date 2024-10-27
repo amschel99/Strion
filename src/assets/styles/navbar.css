@@ -9,13 +9,15 @@ body {
     justify-content: flex-start;
     align-items: center;
     padding: 20px;
-    background-color: #fff;
-    width: 100vw;  /* Full viewport width */
-    position: fixed; /* Keep it at the top */
+    background-color: #0D0E10;
+    width: 100vw;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
-  }
+
+}
+
   
   .navbar-logo h1 {
     color: #ffffff;
@@ -25,8 +27,13 @@ body {
   
   .navbar-links {
     display: flex;
-    gap: 20px;
+    justify-content: flex-end;
+   
+    width: 70%;
+    margin-left: 5vw;
+    gap: 100px;
     list-style: none;
+
   }
   
   .navbar-links li a {
@@ -46,12 +53,16 @@ body {
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
+  
+    margin-left: 70vw;
   }
   
   .menu-icon span {
     height: 3px;
     width: 25px;
+    gap: 100px;
     background-color: #ffffff;
+  
   }
   
   /* Responsive design */
@@ -71,7 +82,11 @@ body {
     }
   
     .navbar-links.open {
-      display: flex; /* Show links when the menu is open */
+      display: flex; 
+
+      width: 90vw;
+      margin-inline: 5VW;
+      /* Show links when the menu is open */
     }
   
     .navbar-links li a {
@@ -81,7 +96,10 @@ body {
     }
   
     .menu-icon {
-      display: flex; /* Show the menu icon on small screens */
+      display: flex; 
+
+
+      /* Show the menu icon on small screens */
     }
   }
   
@@ -93,6 +111,9 @@ body {
   
     .menu-icon {
       display: none; /* Hide the menu icon on larger screens */
+    }
+    .the-logo{
+      margin-left: 1000px;
     }
   }
   

@@ -14,17 +14,17 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <h1 style={{color:"#0E1B20"}}>Strion Whitepaper</h1>
+        <h1 className="the-logo" style={{color:"white"}}>Strion </h1>
       </div>
       <div className={`menu-icon ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
         <span></span>
         <span></span>
         <span></span>
       </div>
-      {/* <ul className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
-        <li><a href="#whitepaper" onClick={() => setIsMenuOpen(false)}>White Paper</a></li>
+      <ul className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
+        <li><a href="#roadmap" onClick={() => setIsMenuOpen(false)}>Roadmap</a></li>
         <li><a href="#blog" onClick={() => setIsMenuOpen(false)}>Blog</a></li>
-      </ul> */}
+      </ul>
     </nav>
   );
 };

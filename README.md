@@ -1,4 +1,4 @@
-# 🪙 Cross-Chain Staking & Lending Platform
+# 🪙 Cross-Chain liquidity through  Staking & Lending
 
 ## Overview
  a **cross-chain decentralized finance (DeFi)** platform that enables users to stake USDT on Ethereum  or any other chain and receive wrapped tokens (**Token C**) on  Union . Users can use **Token C** as collateral to borrow assets provided by **Automated Market Makers (AMMs)** from multiple chains. AMMs are incentivized to lend assets by setting their interest rates, while collateral liquidation ensures both platform revenue and lender security.
@@ -64,41 +64,7 @@ Cross-chain liquidity and collateral efficiency in decentralized finance are sti
 
 
 ---
-```mermaid
 
-flowchart TD
-    %% Presentation Layer
-    User[User Wallet/Interface] --> PlatformUI[Client Interface]
+### System Diagram
+![System Diagram](./public/system.png)
 
-    %% Application Layer (Union Platform Services)
-    subgraph Application Layer
-        PlatformUI --> IntentModule[Intent-Based Bridging]
-        IntentModule --> AMM[AMM Pool and Lending System]
-        AMM --> RiskModule[Risk Management & Fees]
-    end
-
-    %% Data Layer (Blockchain Networks)
-    subgraph Data Layer
-        UnionChain[Union Chain]
-        Ethereum[Chain: Ethereum]
-        Solana[Chain: Solana]
-        SUI[Chain: SUI]
-    end
-
-    %% Connect application components to data layer
-    IntentModule --> UnionChain
-    UnionChain --> Ethereum
-    UnionChain --> Solana
-    UnionChain --> SUI
-    
-    %% Cross-chain interactions
-    Ethereum -- USDT Locked --> UnionChain
-    UnionChain -- WUSDT --> AMM
-    Solana -- Memecoin Supply --> AMM
-    SUI -- Token Liquidity --> AMM
-    
-    %% Fees & Liquidation Flow
-    RiskModule --> AMM
-
-
- ```
