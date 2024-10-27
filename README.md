@@ -66,37 +66,44 @@ Cross-chain liquidity and collateral efficiency in decentralized finance are sti
 ---
 ```mermaid
 graph TD
-    A[User] -->|Stake USDT| B[Wrapper Token C]
-    B -->|Use as Collateral| C[AMMs (Lenders)]
-    C -->|Provide Liquidity| D[Multi-Chain Liquidity Pools]
-    D -->|Offer Assets| E[Borrowers]
-    E -->|Request to Borrow| F[Different Assets]
-    F -->|Borrow| G[Receive Assets]
-    E -->|Pay Interest| C
-    E -->|Liquidation Penalties| H[Penalty System]
-    H -->|Distribute| I[Platform Revenue]
-    I -->|Part of Interest| C
-    I -->|Liquidation Fees| J[Platform Earnings]
-    B -->|Repay| C
-    C -->|Earnings| K[Incentive Rewards]
+    %% Ethereum Chain where USDT is locked
+    User -->|Lock USDT| Ethereum[Ethereum Chain]
+    Ethereum -->|Mint WUSDT| UnionChain[Union Chain]
 
-    %% Subgraphs for better organization
-    subgraph Users
-        A
-        E
+    %% AMMs and Borrowers check WUSDT on Union Chain
+    UnionChain -->|Check WUSDT| AMMs_Union[Lenders on Union Chain]
+    UnionChain -->|Check WUSDT| Borrowers_Union[Borrowers on Union Chain]
+
+    %% AMMs lend assets to borrowers on other chains
+    AMMs_Union -->|Authorize Lending| AMMs_Other[Lenders on Other Chains]
+    AMMs_Other -->|Lend Assets| Borrowers_Other[Borrowers on Other Chains]
+
+    %% Borrower repays loan with interest
+    Borrowers_Other -->|Repay Loan| AMMs_Other
+    Borrowers_Union -->|Repay Loan| AMMs_Union
+
+    %% Liquidation in case of default
+    Borrowers_Union -->|Default| Liquidation[Liquidation Process]
+    Liquidation -->|85% to AMM, 15% to Platform| UnionChain
+
+    %% Platform receives a portion of interest or liquidation penalty
+    Borrowers_Union -->|Pay Interest| Platform[Platform on Union Chain]
+
+    %% Subgraphs for different chains
+    subgraph "Ethereum Chain"
+        Ethereum
     end
-
-    subgraph Lenders
-        C
+    
+    subgraph "Union Chain"
+        UnionChain
+        Platform
+        AMMs_Union
+        Borrowers_Union
     end
-
-    subgraph Platform
-        B
-        D
-        H
-        I
-        K
-        J
+    
+    subgraph "Other Chains (Solana, ICP, etc.)"
+        AMMs_Other
+        Borrowers_Other
     end
 
  ```
