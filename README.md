@@ -65,45 +65,40 @@ Cross-chain liquidity and collateral efficiency in decentralized finance are sti
 
 ---
 ```mermaid
-graph TD
-    %% Ethereum Chain where USDT is locked
-    User -->|Lock USDT| Ethereum[Ethereum Chain]
-    Ethereum -->|Mint WUSDT| UnionChain[Union Chain]
 
-    %% AMMs and Borrowers check WUSDT on Union Chain
-    UnionChain -->|Check WUSDT| AMMs_Union[Lenders on Union Chain]
-    UnionChain -->|Check WUSDT| Borrowers_Union[Borrowers on Union Chain]
+flowchart TD
+    %% Presentation Layer
+    User[User Wallet/Interface] --> PlatformUI[Client Interface]
 
-    %% AMMs lend assets to borrowers on other chains
-    AMMs_Union -->|Authorize Lending| AMMs_Other[Lenders on Other Chains]
-    AMMs_Other -->|Lend Assets| Borrowers_Other[Borrowers on Other Chains]
-
-    %% Borrower repays loan with interest
-    Borrowers_Other -->|Repay Loan| AMMs_Other
-    Borrowers_Union -->|Repay Loan| AMMs_Union
-
-    %% Liquidation in case of default
-    Borrowers_Union -->|Default| Liquidation[Liquidation Process]
-    Liquidation -->|85% to AMM, 15% to Platform| UnionChain
-
-    %% Platform receives a portion of interest or liquidation penalty
-    Borrowers_Union -->|Pay Interest| Platform[Platform on Union Chain]
-
-    %% Subgraphs for different chains
-    subgraph "Ethereum Chain"
-        Ethereum
+    %% Application Layer (Union Platform Services)
+    subgraph Application Layer
+        PlatformUI --> IntentModule[Intent-Based Bridging]
+        IntentModule --> AMM[AMM Pool and Lending System]
+        AMM --> RiskModule[Risk Management & Fees]
     end
+
+    %% Data Layer (Blockchain Networks)
+    subgraph Data Layer
+        UnionChain[Union Chain]
+        Ethereum[Chain: Ethereum]
+        Solana[Chain: Solana]
+        SUI[Chain: SUI]
+    end
+
+    %% Connect application components to data layer
+    IntentModule --> UnionChain
+    UnionChain --> Ethereum
+    UnionChain --> Solana
+    UnionChain --> SUI
     
-    subgraph "Union Chain"
-        UnionChain
-        Platform
-        AMMs_Union
-        Borrowers_Union
-    end
+    %% Cross-chain interactions
+    Ethereum -- USDT Locked --> UnionChain
+    UnionChain -- WUSDT --> AMM
+    Solana -- Memecoin Supply --> AMM
+    SUI -- Token Liquidity --> AMM
     
-    subgraph "Other Chains (Solana, ICP, etc.)"
-        AMMs_Other
-        Borrowers_Other
-    end
+    %% Fees & Liquidation Flow
+    RiskModule --> AMM
+
 
  ```
