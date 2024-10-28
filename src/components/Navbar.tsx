@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import "../assets/styles/navbar.css"
 
 import React, { useState } from 'react';
@@ -14,7 +15,10 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
+        <Link to="/">
         <h1 className="the-logo" style={{color:"white"}}>Strion </h1>
+        </Link>
+      
       </div>
       <div className={`menu-icon ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
         <span></span>
@@ -23,7 +27,7 @@ const Navbar: React.FC = () => {
       </div>
       <ul className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
         <li><a href="#roadmap" onClick={() => setIsMenuOpen(false)}>Roadmap</a></li>
-        <li><a href="#blog" onClick={() => setIsMenuOpen(false)}>Blog</a></li>
+        <li><a href="whitepaper" onClick={() => setIsMenuOpen(false)}>Whitepaper</a></li>
       </ul>
     </nav>
   );
